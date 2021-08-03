@@ -242,6 +242,13 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+// Prevent window scrolling with arrow keys
+window.addEventListener('keydown', (e) => {
+  if (['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].indexOf(e.code) > -1) {
+    e.preventDefault();
+  }
+}, false);
+
 playerReset();
 updateScore();
 update();
