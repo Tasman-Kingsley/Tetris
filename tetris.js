@@ -127,7 +127,7 @@ function draw() {
 }
 
 let dropCounter = 0;
-const dropInterval = 1000;
+let dropInterval = 500;
 
 let lastTime = 0;
 
@@ -249,6 +249,16 @@ window.addEventListener('keydown', (e) => {
   }
 }, false);
 
-playerReset();
-updateScore();
-update();
+function start() {
+  playerReset();
+  updateScore();
+  update();
+}
+
+function stop() {
+  player.pos = { x: 0, y: 0 };
+  player.matrix = null;
+  player.score = 0;
+  arena.forEach(row => row.fill(0));
+}
+
