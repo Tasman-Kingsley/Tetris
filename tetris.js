@@ -116,6 +116,7 @@ const player = {
   pos: { x: 0, y: 0 },
   matrix: null,
   score: 0,
+  level: 1,
 };
 
 function draw() {
@@ -127,7 +128,7 @@ function draw() {
 }
 
 let dropCounter = 0;
-let dropInterval = 500;
+let dropInterval = 1000;
 
 let lastTime = 0;
 
@@ -180,6 +181,7 @@ function playerReset() {
     arena.forEach(row => row.fill(0));
 
     player.score = 0;
+    player.level = 1;
     updateScore();
   }
 }
@@ -215,6 +217,45 @@ function update(time = 0) {
 
 function updateScore() {
   document.getElementById('score').innerText = player.score;
+
+  if (player.score >= 100 && player.level === 1) {
+    player.level = 2;
+    dropInterval = dropInterval - 100;
+  } 
+  else if (player.score >= 200 && player.level === 2) {
+    player.level = 3;
+    dropInterval = dropInterval - 100;
+  } 
+  else if (player.score >= 300 && player.level === 3) {
+    player.level = 4;
+    dropInterval = dropInterval - 100;
+  } 
+  else if (player.score >= 400 && player.level === 4) {
+    player.level = 5;
+    dropInterval = dropInterval - 100;
+  } 
+  else if (player.score >= 500 && player.level === 5) {
+    player.level = 6;
+    dropInterval = dropInterval - 100;
+  }
+  else if (player.score >= 600 && player.level === 6) {
+    player.level = 7;
+    dropInterval = dropInterval - 100;
+  }
+  else if (player.score >= 700 && player.level === 7) {
+    player.level = 8;
+    dropInterval = dropInterval - 100;
+  }
+  else if (player.score >= 800 && player.level === 8) {
+    player.level = 9;
+    dropInterval = dropInterval - 100;
+  }
+  else if (player.score >= 900 && player.level === 9) {
+    player.level = 10;
+    dropInterval = dropInterval - 100;
+  }
+
+  document.getElementById('level').innerText = player.level;
 }
 
 const colors = [
@@ -250,6 +291,7 @@ window.addEventListener('keydown', (e) => {
 }, false);
 
 function start() {
+  player.level = 1;
   playerReset();
   updateScore();
   update();
@@ -259,6 +301,8 @@ function stop() {
   player.pos = { x: 0, y: 0 };
   player.matrix = null;
   player.score = 0;
+  player.level = 0;
   arena.forEach(row => row.fill(0));
+  updateScore();
 }
 

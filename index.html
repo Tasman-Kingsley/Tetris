@@ -10,7 +10,7 @@
       background: #282a36;
       color: #f8f8f2;
       font-family: helvetica, sans-serif;
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       text-align: center;
     }
     canvas {
@@ -26,6 +26,7 @@
       border: none;
       background-color: #6272a4;
       color: #f8f8f2;
+      text-align: center;
     }
     .ctrls {
       color: #282a36;
@@ -40,6 +41,12 @@
       line-height: 40px;
       font-size: 1.8rem;
       border-radius: 5px;
+      text-align: center;
+    }
+
+    button:hover {
+      opacity: 0.9;
+      cursor: pointer;
     }
 
     button:focus {
@@ -48,10 +55,20 @@
   </style>
 </head>
 <body>
-  <div id="score">0</div>
+  <div style="display: flex; justify-content: center;  gap: 0px 60px;">
+    <div>
+      <span>Score:</span>
+      <span id="score">0</span>
+    </div>
+    <div>
+      <span>Level:</span>
+      <span id="level">0</span>
+    </div>
+  </div>
+  
   <canvas id="tetris" width="240" height="400"></canvas>
-  <div style="display: flex; justify-content: center; gap: 0px 40px;">
-    <div style="display: flex; flex-direction: column;  justify-content: space-around;">
+  <div style="display: flex; justify-content: center; gap: 0px 60px;">
+    <div style="display: flex; flex-direction: column;  justify-content: space-between;">
       <button class="btn" onclick="start()">start</button>
       <button class="btn" onclick="stop()">stop</button>
     </div>
